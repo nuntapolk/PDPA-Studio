@@ -2,6 +2,7 @@
 
 namespace Database\Seeders;
 
+use App\Models\Organization;
 use App\Models\User;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\Hash;
@@ -10,8 +11,19 @@ class UserSeeder extends Seeder
 {
     public function run(): void
     {
-        // Primary organization (id = 1)
-        $orgId = 1;
+        // Ensure primary organization exists
+        $org = Organization::firstOrCreate(
+            ['slug' => 'primary'],
+            [
+                'name'      => config('app.company', 'PDPA Studio'),
+                'tax_id'    => '0000000000000',
+                'industry'  => 'technology',
+                'plan'      => 'enterprise',
+                'status'    => 'active',
+                'max_users' => 999,
+            ]
+        );
+        $orgId = $org->id;
 
         foreach (config('accounts.users') as $account) {
             // Skip if email already exists
