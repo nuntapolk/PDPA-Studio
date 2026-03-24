@@ -10,7 +10,7 @@ PHP_CLI_SERVER_WORKERS = "4"
 # ── Phase 1: Install dependencies ─────────────────────────────────────────
 [phases.install]
 cmds = [
-    "composer install --no-dev --optimize-autoloader --no-interaction"
+    "composer install --no-dev --optimize-autoloader --no-interaction --ignore-platform-reqs"
 ]
 
 # ── Phase 2: Build / Cache ─────────────────────────────────────────────────
