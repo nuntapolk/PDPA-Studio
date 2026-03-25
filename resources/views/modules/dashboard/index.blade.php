@@ -29,7 +29,7 @@
         <svg class="w-4.5 h-4.5" style="width:18px;height:18px;color:#b45309;" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
     </div>
     <p class="text-sm font-semibold flex-1" style="color: #78350f;">คำขอสิทธิ์เจ้าของข้อมูล <span style="color: #b45309;">{{ $overdueRights }} รายการ</span> เกินกำหนด 30 วัน</p>
-    <a href="{{ route('rights.index') }}" class="flex-shrink-0 text-xs font-bold px-3 py-1.5 rounded-lg transition" style="background: #b45309; color: white;">ดูทั้งหมด →</a>
+    <a href="{{ route('rights.index') }}" class="flex-shrink-0 text-xs font-bold px-3 py-1.5 rounded-lg transition" style="background: #b45309; color: white;">All</a>
 </div>
 @endif
 
@@ -86,7 +86,7 @@
     <div class="card overflow-hidden">
         <div class="flex items-center justify-between px-5 py-4" style="border-bottom: 1px solid #f1f5f9;">
             <h2 class="text-sm font-bold" style="color: #0f3020;">คำขอสิทธิ์ล่าสุด</h2>
-            <a href="{{ route('rights.index') }}" class="text-xs font-semibold" style="color: #15572e;">ดูทั้งหมด →</a>
+            <a href="{{ route('rights.index') }}" class="text-xs font-semibold" style="color: #15572e;">All</a>
         </div>
         @forelse($recentRights as $rr)
         @php
@@ -112,7 +112,7 @@
     <div class="card overflow-hidden">
         <div class="flex items-center justify-between px-5 py-4" style="border-bottom: 1px solid #f1f5f9;">
             <h2 class="text-sm font-bold" style="color: #0f3020;">Data Breach ล่าสุด</h2>
-            <a href="{{ route('breach.index') }}" class="text-xs font-semibold" style="color: #15572e;">ดูทั้งหมด →</a>
+            <a href="{{ route('breach.index') }}" class="text-xs font-semibold" style="color: #15572e;">All</a>
         </div>
         @forelse($recentBreaches as $breach)
         @php

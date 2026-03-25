@@ -265,7 +265,7 @@
                         </div>
 
                         <div class="mt-4 flex gap-2">
-                            <a :href="'/parties/'+selectedParty.id" style="display:inline-flex;align-items:center;justify-content:center;gap:4px;padding:5px 10px;border-radius:20px;background:#f0fdf4;color:#15572e;border:1px solid #bbf7d0;font-size:12px;font-weight:500;flex:1;"><svg width="13" height="13" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-4.35-4.35M17 11A6 6 0 1 1 5 11a6 6 0 0 1 12 0z"/></svg>ดู</a>
+                            <a :href="'/parties/'+selectedParty.id" style="display:inline-flex;align-items:center;justify-content:center;gap:4px;padding:5px 10px;border-radius:20px;background:#f0fdf4;color:#15572e;border:1px solid #bbf7d0;font-size:12px;font-weight:500;flex:1;"><svg width="13" height="13" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-4.35-4.35M17 11A6 6 0 1 1 5 11a6 6 0 0 1 12 0z"/></svg></a>
                             <a :href="'/parties/'+selectedParty.id+'/edit'" class="btn-outline text-xs flex-1 text-center py-1.5">แก้ไข</a>
                         </div>
                     </div>
@@ -328,7 +328,7 @@
                         <span class="text-xs capitalize" style="color:#64748b;">{{ $p['status'] }}</span>
                     </td>
                     <td class="px-4 py-3 text-right">
-                        <a href="{{ route('parties.show', $p['id']) }}" style="display:inline-flex;align-items:center;gap:4px;padding:5px 10px;border-radius:20px;background:#f0fdf4;color:#15572e;border:1px solid #bbf7d0;font-size:12px;font-weight:500;"><svg width="13" height="13" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-4.35-4.35M17 11A6 6 0 1 1 5 11a6 6 0 0 1 12 0z"/></svg>ดู</a>
+                        <a href="{{ route('parties.show', $p['id']) }}" style="display:inline-flex;align-items:center;gap:4px;padding:5px 10px;border-radius:20px;background:#f0fdf4;color:#15572e;border:1px solid #bbf7d0;font-size:12px;font-weight:500;"><svg width="13" height="13" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-4.35-4.35M17 11A6 6 0 1 1 5 11a6 6 0 0 1 12 0z"/></svg></a>
                     </td>
                 </tr>
                 @empty
