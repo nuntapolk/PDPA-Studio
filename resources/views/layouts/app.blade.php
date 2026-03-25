@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>@yield('title', 'PDPA Studio')</title>
+    <title>@yield('title', config('app.name', 'MPX PDPA Studio'))</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <script>
     tailwind.config = {
@@ -143,46 +143,22 @@
 
         <!-- Logo -->
         <div class="px-4 py-3 flex-shrink-0" style="border-bottom:1px solid rgba(21,87,46,0.12);">
-            @if(file_exists(public_path('images/logo.png')))
-            <div class="flex items-center gap-2.5 mb-2">
-                <img src="{{ asset('images/logo.png') }}" alt="{{ config('app.company') }}"
-                     class="object-contain flex-shrink-0" style="height:32px;max-width:72px;">
-                <div class="min-w-0">
-                    <div class="font-bold leading-tight" style="font-size:12px;max-width:110px;color:#111111;" title="{{ config('app.name') }}">
-                        {{ config('app.name') }}
-                    </div>
-                    <div class="font-mono" style="color:#111111;font-size:9px;margin-top:1px;">
-                        v{{ config('app.version') }} B{{ config('app.build') }}
-                    </div>
+            {{-- App name + version --}}
+            <div class="mb-2">
+                <div class="font-bold leading-tight" style="font-size:13px;color:#111111;">
+                    {{ config('app.name') }}
+                </div>
+                <div class="font-mono" style="color:#111111;font-size:9px;margin-top:1px;">
+                    v{{ config('app.version') }} B{{ config('app.build') }}
                 </div>
             </div>
-            @else
-            <div class="flex items-center gap-3 mb-2">
-                <div class="w-9 h-9 rounded-xl flex items-center justify-center flex-shrink-0"
-                     style="background:linear-gradient(135deg,#c0272d,#e53e3e);box-shadow:0 3px 10px rgba(192,39,45,0.3);">
-                    <svg class="w-5 h-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"/>
-                    </svg>
-                </div>
-                <div class="min-w-0">
-                    <div class="font-bold text-sm" style="color:#111111;">{{ config('app.name') }}</div>
-                    <div class="font-mono" style="color:#111111;font-size:9px;">
-                        v{{ config('app.version') }} B{{ config('app.build') }}
-                    </div>
-                </div>
-            </div>
-            @endif
 
-            {{-- Powered by Incognito Lab --}}
-            @if(file_exists(public_path('images/logo-incognito.png')))
+            {{-- Powered by --}}
             <div class="flex items-center gap-2">
                 <span style="color:#111111;font-size:9px;white-space:nowrap;">Powered by</span>
-                <img src="{{ asset('images/logo-incognito.png') }}" alt="Incognito Lab"
-                     class="object-contain" style="height:32px;opacity:1;">
+                <img src="{{ asset('images/partner-incog-mpx.png') }}" alt="Incognito Lab x MPX"
+                     class="object-contain" style="height:28px;max-width:130px;">
             </div>
-            @else
-            <div class="text-xs" style="color:rgba(0,0,0,0.4);font-size:10px;">{{ config('app.company') }}</div>
-            @endif
         </div>
 
         <!-- Nav -->
