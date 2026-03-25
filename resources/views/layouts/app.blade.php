@@ -174,12 +174,12 @@
 
             <a href="{{ route('consent.index') }}" class="nav-item {{ request()->routeIs('consent.*') ? 'active' : '' }}">
                 <svg class="w-4 h-4 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-6 9l2 2 4-4"/></svg>
-                ความยินยอม
+                Consent Management
             </a>
 
             <a href="{{ route('rights.index') }}" class="nav-item {{ request()->routeIs('rights.*') ? 'active' : '' }}">
                 <svg class="w-4 h-4 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"/></svg>
-                สิทธิ์เจ้าของข้อมูล
+                Data Subject Right
                 @php $overdue = \App\Models\RightsRequest::where('organization_id', auth()->user()->organization_id)->overdue()->count(); @endphp
                 @if($overdue > 0)
                 <span class="ml-auto text-xs font-bold px-1.5 py-0.5 rounded-md" style="background: #c0272d; color: white; font-size: 10px;">{{ $overdue }}</span>

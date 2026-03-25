@@ -25,7 +25,7 @@ return [
     */
     'company' => env('APP_COMPANY', 'PDPA Studio'),
     'version' => env('APP_VERSION', '1.3'),
-    'build'   => env('APP_BUILD',   10),
+    'build'   => env('APP_BUILD',   11),
 
     /*
     |--------------------------------------------------------------------------
