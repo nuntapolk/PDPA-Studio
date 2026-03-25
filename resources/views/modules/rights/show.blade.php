@@ -20,8 +20,8 @@
                     <p class="text-sm mt-0.5" style="color:#94a3b8;">ยื่นเมื่อ {{ $rightsRequest->created_at->format('d M Y H:i') }}</p>
                 </div>
                 @php
-                    $statusColors = ['pending' => 'badge-yellow', 'in_progress' => 'badge-blue', 'completed' => 'badge-green', 'rejected' => 'badge-red', 'cancelled' => 'badge-gray'];
-                    $statusLabels = ['pending' => 'รอดำเนินการ', 'in_progress' => 'กำลังดำเนินการ', 'completed' => 'เสร็จสิ้น', 'rejected' => 'ปฏิเสธ', 'cancelled' => 'ยกเลิก'];
+                    $statusColors = ['pending' => 'badge-yellow', 'in_review' => 'badge-blue', 'awaiting_info' => 'badge-yellow', 'approved' => 'badge-green', 'completed' => 'badge-green', 'rejected' => 'badge-red', 'withdrawn' => 'badge-gray'];
+                    $statusLabels = ['pending' => 'รอดำเนินการ', 'in_review' => 'กำลัง Review', 'awaiting_info' => 'รอข้อมูลเพิ่ม', 'approved' => 'อนุมัติ', 'completed' => 'เสร็จสิ้น', 'rejected' => 'ปฏิเสธ', 'withdrawn' => 'ถอนคำขอ'];
                 @endphp
                 <span class="badge {{ $statusColors[$rightsRequest->status] ?? 'badge-gray' }}">{{ $statusLabels[$rightsRequest->status] ?? $rightsRequest->status }}</span>
             </div>
@@ -116,11 +116,13 @@
             <form action="{{ route('rights.update-status', $rightsRequest) }}" method="POST" class="space-y-3">
                 @csrf @method('PATCH')
                 <select name="status" class="form-input">
-                    <option value="pending" {{ $rightsRequest->status === 'pending' ? 'selected' : '' }}>รอดำเนินการ</option>
-                    <option value="in_progress" {{ $rightsRequest->status === 'in_progress' ? 'selected' : '' }}>กำลังดำเนินการ</option>
-                    <option value="completed" {{ $rightsRequest->status === 'completed' ? 'selected' : '' }}>เสร็จสิ้น</option>
-                    <option value="rejected" {{ $rightsRequest->status === 'rejected' ? 'selected' : '' }}>ปฏิเสธ</option>
-                    <option value="cancelled" {{ $rightsRequest->status === 'cancelled' ? 'selected' : '' }}>ยกเลิก</option>
+                    <option value="pending"       {{ $rightsRequest->status === 'pending'       ? 'selected' : '' }}>รอดำเนินการ</option>
+                    <option value="in_review"    {{ $rightsRequest->status === 'in_review'    ? 'selected' : '' }}>กำลัง Review</option>
+                    <option value="awaiting_info"{{ $rightsRequest->status === 'awaiting_info'? 'selected' : '' }}>รอข้อมูลเพิ่ม</option>
+                    <option value="approved"     {{ $rightsRequest->status === 'approved'     ? 'selected' : '' }}>อนุมัติ</option>
+                    <option value="completed"    {{ $rightsRequest->status === 'completed'    ? 'selected' : '' }}>เสร็จสิ้น</option>
+                    <option value="rejected"     {{ $rightsRequest->status === 'rejected'     ? 'selected' : '' }}>ปฏิเสธ</option>
+                    <option value="withdrawn"    {{ $rightsRequest->status === 'withdrawn'    ? 'selected' : '' }}>ถอนคำขอ</option>
                 </select>
                 <button type="submit" class="btn-primary w-full">อัปเดตสถานะ</button>
             </form>

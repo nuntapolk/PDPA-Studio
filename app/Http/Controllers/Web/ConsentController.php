@@ -63,7 +63,7 @@ class ConsentController extends Controller
 
         $template = ConsentTemplate::create(array_merge($validated, [
             'organization_id' => $orgId,
-            'version'  => '1.0',
+            'version'  => 1,
             'is_active' => true,
             'created_by' => Auth::id(),
         ]));

@@ -75,7 +75,7 @@ class RightsRequestController extends Controller
         $this->authorizeOrg($rightsRequest->organization_id);
 
         $validated = $request->validate([
-            'status' => 'required|in:pending,in_progress,completed,rejected,cancelled',
+            'status' => 'required|in:pending,in_review,awaiting_info,approved,completed,rejected,withdrawn',
         ]);
 
         $rightsRequest->update($validated);

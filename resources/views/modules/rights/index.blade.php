@@ -55,8 +55,8 @@
             @forelse($requests as $rr)
             @php
                 $isOverdue = $rr->isOverdue() && in_array($rr->status, ['pending','in_review','awaiting_info']);
-                $statusColors = ['pending' => 'badge-yellow', 'in_progress' => 'badge-blue', 'completed' => 'badge-green', 'rejected' => 'badge-red', 'cancelled' => 'badge-gray'];
-                $statusLabels = ['pending' => 'รอดำเนินการ', 'in_progress' => 'กำลังดำเนินการ', 'completed' => 'เสร็จสิ้น', 'rejected' => 'ปฏิเสธ', 'cancelled' => 'ยกเลิก'];
+                $statusColors = ['pending' => 'badge-yellow', 'in_review' => 'badge-blue', 'awaiting_info' => 'badge-yellow', 'approved' => 'badge-green', 'completed' => 'badge-green', 'rejected' => 'badge-red', 'withdrawn' => 'badge-gray'];
+                $statusLabels = ['pending' => 'รอดำเนินการ', 'in_review' => 'กำลัง Review', 'awaiting_info' => 'รอข้อมูลเพิ่ม', 'approved' => 'อนุมัติ', 'completed' => 'เสร็จสิ้น', 'rejected' => 'ปฏิเสธ', 'withdrawn' => 'ถอนคำขอ'];
                 $typeLabels = ['access' => 'ขอเข้าถึงข้อมูล', 'rectification' => 'ขอแก้ไข', 'erasure' => 'ขอลบข้อมูล', 'restriction' => 'ขอระงับ', 'portability' => 'ขอโอนย้าย', 'objection' => 'คัดค้านการใช้', 'withdraw_consent' => 'ถอนความยินยอม'];
             @endphp
             <tr style="{{ $isOverdue ? 'background:#fff5f5;' : '' }}">
