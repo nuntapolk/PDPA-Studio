@@ -55,7 +55,7 @@ class BreachController extends Controller
             'discovered_at'       => $validated['discovered_at'],
             'affected_count'      => $validated['affected_count'] ?? 0,
             'data_types_affected' => $request->input('data_types_affected', []),
-            'status'              => 'open',
+            'status'              => 'new',
             'reported_by'         => Auth::id(),
             'requires_pdpc_notification' => in_array($validated['severity'], ['high', 'critical']),
         ]);
@@ -101,7 +101,7 @@ class BreachController extends Controller
 
         $breach->update([
             'pdpc_notified_at' => now(),
-            'status'           => 'notified',
+            'status'           => 'notifying_pdpc',
         ]);
 
         BreachTimeline::create([
