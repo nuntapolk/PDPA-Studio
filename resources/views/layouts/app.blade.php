@@ -145,14 +145,13 @@
         <div class="px-4 py-3 flex-shrink-0" style="border-bottom:1px solid rgba(21,87,46,0.12);">
             @if(file_exists(public_path('images/logo.png')))
             <div class="flex items-center gap-2.5 mb-2">
-                {{-- MPX logo — พื้น sidebar สว่างแล้ว แสดงตรงได้เลย --}}
                 <img src="{{ asset('images/logo.png') }}" alt="{{ config('app.company') }}"
                      class="object-contain flex-shrink-0" style="height:32px;max-width:72px;">
                 <div class="min-w-0">
-                    <div class="font-bold leading-tight" style="font-size:12px;max-width:110px;color:#15572e;" title="{{ config('app.name') }}">
+                    <div class="font-bold leading-tight" style="font-size:12px;max-width:110px;color:#111111;" title="{{ config('app.name') }}">
                         {{ config('app.name') }}
                     </div>
-                    <div class="font-mono" style="color:rgba(21,87,46,0.45);font-size:9px;margin-top:1px;">
+                    <div class="font-mono" style="color:#111111;font-size:9px;margin-top:1px;">
                         v{{ config('app.version') }} B{{ config('app.build') }}
                     </div>
                 </div>
@@ -166,8 +165,8 @@
                     </svg>
                 </div>
                 <div class="min-w-0">
-                    <div class="font-bold text-sm" style="color:#15572e;">{{ config('app.name') }}</div>
-                    <div class="font-mono" style="color:rgba(21,87,46,0.45);font-size:9px;">
+                    <div class="font-bold text-sm" style="color:#111111;">{{ config('app.name') }}</div>
+                    <div class="font-mono" style="color:#111111;font-size:9px;">
                         v{{ config('app.version') }} B{{ config('app.build') }}
                     </div>
                 </div>
@@ -176,13 +175,13 @@
 
             {{-- Powered by Incognito Lab --}}
             @if(file_exists(public_path('images/logo-incognito.png')))
-            <div class="flex items-center gap-1.5">
-                <span style="color:rgba(21,87,46,0.35);font-size:9px;">Powered by</span>
+            <div class="flex items-center gap-2">
+                <span style="color:#111111;font-size:9px;white-space:nowrap;">Powered by</span>
                 <img src="{{ asset('images/logo-incognito.png') }}" alt="Incognito Lab"
-                     class="object-contain" style="height:11px;opacity:0.4;">
+                     class="object-contain" style="height:32px;opacity:1;">
             </div>
             @else
-            <div class="text-xs" style="color:rgba(21,87,46,0.5);font-size:10px;">{{ config('app.company') }}</div>
+            <div class="text-xs" style="color:rgba(0,0,0,0.4);font-size:10px;">{{ config('app.company') }}</div>
             @endif
         </div>
 
@@ -257,19 +256,6 @@
                 Training
             </a>
 
-            @if(auth()->user()->isAdmin())
-            <a href="{{ route('logs.index') }}" class="nav-item {{ request()->routeIs('logs.*') ? 'active' : '' }}">
-                <svg class="w-4 h-4 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-3 7h3m-3 4h3m-6-4h.01M9 16h.01"/></svg>
-                System Logs
-                @php
-                $unresolvedSec = \App\Models\SecurityLog::where('organization_id', auth()->user()->organization_id)
-                    ->whereIn('severity',['critical','high'])->where('is_resolved',false)->count();
-                @endphp
-                @if($unresolvedSec > 0)
-                    <span class="ml-auto text-xs font-bold px-1.5 py-0.5 rounded-full" style="background:#c0272d;color:#fff;">{{ $unresolvedSec }}</span>
-                @endif
-            </a>
-            @endif
 
             <a href="{{ route('parties.index') }}" class="nav-item {{ request()->routeIs('parties.*') ? 'active' : '' }}">
                 <svg class="w-4 h-4 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0"/></svg>
@@ -302,6 +288,18 @@
                 $totalUsers = \App\Models\User::count();
                 @endphp
                 <span class="ml-auto text-xs px-1.5 py-0.5 rounded-full" style="background:rgba(255,255,255,0.1);color:#a7c8b5;">{{ $totalUsers }}</span>
+            </a>
+
+            <a href="{{ route('logs.index') }}" class="nav-item {{ request()->routeIs('logs.*') ? 'active' : '' }}">
+                <svg class="w-4 h-4 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-3 7h3m-3 4h3m-6-4h.01M9 16h.01"/></svg>
+                System Logs
+                @php
+                $unresolvedSec = \App\Models\SecurityLog::where('organization_id', auth()->user()->organization_id)
+                    ->whereIn('severity',['critical','high'])->where('is_resolved',false)->count();
+                @endphp
+                @if($unresolvedSec > 0)
+                    <span class="ml-auto text-xs font-bold px-1.5 py-0.5 rounded-full" style="background:#c0272d;color:#fff;">{{ $unresolvedSec }}</span>
+                @endif
             </a>
             @endif
         </nav>

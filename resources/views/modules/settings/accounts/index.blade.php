@@ -197,15 +197,5 @@
     @endif
 </div>
 
-{{-- Password Policy Info ────────────────────────────────────────────────── --}}
-<div class="mt-4 p-4 rounded-xl text-sm" style="background:#f8fafc;border:1px solid #e2e8f0;">
-    <p class="font-semibold mb-1" style="color:#374151;">🔑 Default Accounts (จาก config/accounts.php)</p>
-    <div class="grid grid-cols-2 gap-2 text-xs mt-2" style="color:#64748b;">
-        <div><strong>admin@pdpa.local</strong> — Admin@2025! (เปลี่ยนหลัง deploy)</div>
-        <div><strong>nuntapol@pdpa.local</strong> — Nuntapol@2025! (เปลี่ยนหลัง deploy)</div>
-        <div><strong>editor/dpo/reviewer accounts</strong> — Pdpa@2025!</div>
-        <div class="col-span-2 mt-1">⚙️ เปลี่ยน password เริ่มต้นได้ที่ <code class="px-1 rounded" style="background:#e2e8f0;">.env</code> → <code class="px-1 rounded" style="background:#e2e8f0;">SEED_PASSWORD_*</code></div>
-    </div>
-</div>
 
 @endsection

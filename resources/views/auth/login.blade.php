@@ -266,9 +266,13 @@
                 @csrf
 
                 <div class="field-group">
-                    <label class="field-label">อีเมล</label>
-                    <input type="email" name="email" value="{{ old('email') }}" required autofocus
-                           class="field-input" placeholder="your@email.com">
+                    <label class="field-label">ชื่อผู้ใช้</label>
+                    <input type="text" name="username" value="{{ old('username') }}" required autofocus
+                           class="field-input" placeholder="admin"
+                           autocomplete="username" autocapitalize="none">
+                    @error('username')
+                        <p class="mt-1 text-xs" style="color:#c0272d;">{{ $message }}</p>
+                    @enderror
                 </div>
 
                 <div class="field-group">
@@ -297,30 +301,6 @@
                 <button type="submit" class="btn-login">เข้าสู่ระบบ</button>
             </form>
 
-            <!-- Quick login accounts -->
-            <div class="mt-8 pt-6" style="border-top: 1.5px solid #f3f4f6;">
-                <p class="text-xs font-bold uppercase tracking-widest mb-3" style="color: #9ca3af;">บัญชีสำหรับทดสอบ</p>
-                @foreach([
-                    ['Admin',    'admin@pdpa.local',      '#c0272d', 'Admin@2025!'],
-                    ['Nuntapol', 'nuntapol@pdpa.local',   '#15572e', 'Nuntapol@2025!'],
-                    ['DPO',      'dpo01@pdpa.local',      '#0369a1', 'Pdpa@2025!'],
-                    ['Reviewer', 'reviewer01@pdpa.local', '#7c3aed', 'Pdpa@2025!'],
-                ] as [$role, $email, $color, $pw])
-                <button type="button" onclick="fillDemo('{{ $email }}','{{ $pw }}')" class="demo-btn">
-                    <div class="flex items-center gap-2.5">
-                        <div class="w-6 h-6 rounded-lg flex items-center justify-center text-white text-xs font-bold flex-shrink-0"
-                             style="background:{{ $color }};">{{ strtoupper(substr($role,0,1)) }}</div>
-                        <div>
-                            <p class="text-xs font-semibold" style="color: #111827;">{{ $role }}</p>
-                            <p class="text-xs" style="color: #9ca3af; font-family: monospace;">{{ $email }}</p>
-                        </div>
-                    </div>
-                    <svg class="w-3.5 h-3.5 flex-shrink-0" style="color: #d1d5db;" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/>
-                    </svg>
-                </button>
-                @endforeach
-            </div>
 
             {{-- Footer version ───────────────────────────────────────────── --}}
             <div class="mt-8 text-center">
@@ -333,8 +313,8 @@
 </div>
 
 <script>
-function fillDemo(email, pw) {
-    document.querySelector('input[name=email]').value    = email;
+function fillDemo(username, pw) {
+    document.querySelector('input[name=username]').value = username;
     document.querySelector('input[name=password]').value = pw;
 }
 function togglePwd() {

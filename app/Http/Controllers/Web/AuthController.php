@@ -16,10 +16,15 @@ class AuthController extends Controller
 
     public function login(Request $request)
     {
-        $credentials = $request->validate([
-            'email'    => 'required|email',
+        $request->validate([
+            'username' => 'required|string',
             'password' => 'required',
         ]);
+
+        // แปลง username → email โดยเติม @pdpa.local ถ้ายังไม่มี @
+        $input    = trim($request->username);
+        $email    = str_contains($input, '@') ? $input : $input . '@pdpa.local';
+        $credentials = ['email' => $email, 'password' => $request->password];
 
         if (Auth::attempt($credentials, $request->boolean('remember'))) {
             $request->session()->regenerate();
@@ -38,8 +43,8 @@ class AuthController extends Controller
         }
 
         return back()->withErrors([
-            'email' => 'อีเมลหรือรหัสผ่านไม่ถูกต้อง',
-        ])->onlyInput('email');
+            'username' => 'ชื่อผู้ใช้หรือรหัสผ่านไม่ถูกต้อง',
+        ])->onlyInput('username');
     }
 
     public function logout(Request $request)
