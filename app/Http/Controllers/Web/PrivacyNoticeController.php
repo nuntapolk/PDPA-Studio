@@ -185,6 +185,14 @@ class PrivacyNoticeController extends Controller
                          ->with('success', 'ลบ Privacy Notice สำเร็จ');
     }
 
+    // ── Helpers ────────────────────────────────────────────────────────────
+    private function authorizeOrg(int $orgId): void
+    {
+        if (Auth::user()->organization_id !== $orgId) {
+            abort(403);
+        }
+    }
+
     // ── Public Preview ─────────────────────────────────────────────────────
     public function publicView(string $token)
     {

@@ -252,6 +252,14 @@ class TrainingController extends Controller
         ));
     }
 
+    // ── Helpers ────────────────────────────────────────────────────────────
+    private function authorizeOrg(int $orgId): void
+    {
+        if (Auth::user()->organization_id !== $orgId) {
+            abort(403);
+        }
+    }
+
     // ── Toggle active ──────────────────────────────────────────────────────
     public function toggleActive(TrainingCourse $course)
     {

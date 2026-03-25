@@ -193,6 +193,14 @@ class DpoTaskController extends Controller
         ));
     }
 
+    // ── Helpers ────────────────────────────────────────────────────────────
+    private function authorizeOrg(int $orgId): void
+    {
+        if (Auth::user()->organization_id !== $orgId) {
+            abort(403);
+        }
+    }
+
     // ── Update Checklist Item ──────────────────────────────────────────────
     public function updateChecklistItem(Request $request, ComplianceChecklist $item)
     {
