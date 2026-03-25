@@ -28,6 +28,40 @@ class RightsRequestController extends Controller
         return view('modules.rights.index', compact('requests', 'pendingCount', 'overdueCount', 'resolvedCount'));
     }
 
+    public function create()
+    {
+        return view('modules.rights.create');
+    }
+
+    public function store(Request $request)
+    {
+        $orgId = Auth::user()->organization_id;
+
+        $validated = $request->validate([
+            'requester_name'  => 'required|string|max:255',
+            'requester_email' => 'required|email|max:255',
+            'requester_phone' => 'nullable|string|max:20',
+            'type'            => 'required|in:access,rectification,erasure,restriction,portability,objection,withdraw_consent',
+            'description'     => 'required|string',
+        ]);
+
+        $rightsRequest = RightsRequest::create([
+            'organization_id' => $orgId,
+            'requester_name'  => $validated['requester_name'],
+            'requester_email' => $validated['requester_email'],
+            'requester_phone' => $validated['requester_phone'] ?? null,
+            'type'            => $validated['type'],
+            'description'     => $validated['description'],
+            'status'          => 'pending',
+            'due_date'        => now()->addDays(30),
+        ]);
+
+        AuditLog::record('created', 'rights', $rightsRequest);
+
+        return redirect()->route('rights.show', $rightsRequest)
+            ->with('success', "เพิ่มคำขอสิทธิ์เรียบร้อย — {$rightsRequest->ticket_number}");
+    }
+
     public function show(RightsRequest $rightsRequest)
     {
         $this->authorizeOrg($rightsRequest->organization_id);

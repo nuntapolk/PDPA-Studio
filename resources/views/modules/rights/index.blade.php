@@ -25,13 +25,18 @@
 {{-- Header --}}
 <div class="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3 mb-2">
     <p class="text-sm font-semibold" style="color:#475569;">คำขอทั้งหมด ({{ $requests->total() }})</p>
-    <form method="GET" class="flex items-center gap-2">
-        <select name="per_page" class="form-input" style="width:auto;" onchange="this.form.submit()">
-            <option value="50"  {{ request('per_page','50')  == '50'  ? 'selected' : '' }}>แสดง 50</option>
-            <option value="100" {{ request('per_page')       == '100' ? 'selected' : '' }}>แสดง 100</option>
-            <option value="200" {{ request('per_page')       == '200' ? 'selected' : '' }}>แสดง 200</option>
-        </select>
-    </form>
+    <div class="flex items-center gap-2">
+        <a href="{{ route('rights.create') }}" class="btn-primary" style="padding:7px 16px;font-size:13px;">
+            + เพิ่มคำขอ
+        </a>
+        <form method="GET" class="flex items-center">
+            <select name="per_page" class="form-input" style="width:auto;" onchange="this.form.submit()">
+                <option value="50"  {{ request('per_page','50')  == '50'  ? 'selected' : '' }}>แสดง 50</option>
+                <option value="100" {{ request('per_page')       == '100' ? 'selected' : '' }}>แสดง 100</option>
+                <option value="200" {{ request('per_page')       == '200' ? 'selected' : '' }}>แสดง 200</option>
+            </select>
+        </form>
+    </div>
 </div>
 {{-- Showing results --}}
 <p class="text-xs mb-3" style="color:#94a3b8;">

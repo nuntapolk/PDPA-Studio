@@ -44,6 +44,8 @@ Route::middleware('auth')->group(function () {
     });
     Route::prefix('rights')->name('rights.')->group(function () {
         Route::get('/', [RightsRequestController::class, 'index'])->name('index');
+        Route::get('/create', [RightsRequestController::class, 'create'])->name('create');
+        Route::post('/', [RightsRequestController::class, 'store'])->name('store');
         Route::get('/{rightsRequest}', [RightsRequestController::class, 'show'])->name('show');
         Route::patch('/{rightsRequest}/status', [RightsRequestController::class, 'updateStatus'])->name('update-status');
         Route::post('/{rightsRequest}/notes', [RightsRequestController::class, 'addNote'])->name('add-note');
