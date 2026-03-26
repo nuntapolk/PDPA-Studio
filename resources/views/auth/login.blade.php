@@ -141,14 +141,13 @@
 
         <div class="relative z-10 text-center max-w-md">
 
-            {{-- ── MPX Logo บน left panel (ใส่ใน white card เพราะพื้นเข้ม) ── --}}
+            {{-- ── MPX Logo บน left panel ── --}}
             @if(file_exists(public_path('images/logo.png')))
-                <div class="inline-block mb-6 px-6 py-4 rounded-2xl"
-                     style="background:rgba(255,255,255,0.95);box-shadow:0 8px 32px rgba(0,0,0,0.2);">
+                <div class="inline-block mb-6">
                     <img src="{{ asset('images/logo.png') }}"
                          alt="{{ config('app.company') }}"
                          class="object-contain block"
-                         style="height:64px;max-width:200px;">
+                         style="height:72px;max-width:220px;filter:drop-shadow(0 4px 12px rgba(0,0,0,0.25));">
                 </div>
             @else
                 <div class="inline-flex items-center justify-center w-20 h-20 rounded-2xl mb-6"
@@ -161,8 +160,11 @@
 
             <h1 class="text-4xl font-extrabold text-white mb-2 tracking-tight">{{ config('app.name') }}</h1>
             <p class="text-sm mb-1" style="color:#6baa86;">{{ config('app.company') }}</p>
-            <p class="text-xs mb-10 font-mono" style="color:rgba(107,170,134,0.5);">
+            <p class="text-xs font-mono" style="color:rgba(107,170,134,0.5);">
                 v{{ config('app.version') }} Build {{ config('app.build') }}
+            </p>
+            <p class="text-xs mt-2 mb-10" style="color:rgba(255,255,255,0.45);">
+                Powered by Incognito Lab.
             </p>
 
             <!-- Feature pills -->
