@@ -160,9 +160,7 @@
 
             <h1 class="text-4xl font-extrabold text-white mb-2 tracking-tight">{{ config('app.name') }}</h1>
             <p class="text-sm mb-1" style="color:#6baa86;">{{ config('app.company') }}</p>
-            <p class="text-xs mt-2 mb-10" style="color:rgba(255,255,255,0.45);">
-                Powered by Incognito Lab.
-            </p>
+            <p class="mb-10"></p>
 
             <!-- Feature pills -->
             <div class="flex flex-col gap-3 text-left">
@@ -301,12 +299,6 @@
             </form>
 
 
-            {{-- Footer version ───────────────────────────────────────────── --}}
-            <div class="mt-8 text-center">
-                <p class="text-xs font-mono" style="color:#d1d5db;">
-                    {{ config('app.name') }} v{{ config('app.version') }} Build&nbsp;{{ config('app.build') }}
-                </p>
-            </div>
         </div>
     </div>
 </div>
