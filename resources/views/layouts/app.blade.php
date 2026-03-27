@@ -153,12 +153,6 @@
                 </div>
             </div>
 
-            {{-- Powered by --}}
-            <div class="flex items-center gap-2">
-                <span style="color:#111111;font-size:9px;white-space:nowrap;">Powered by</span>
-                <img src="{{ asset('images/partner-incog-mpx2.png') }}" alt="Incognito Lab x MPX"
-                     class="object-contain" style="height:28px;max-width:130px;">
-            </div>
         </div>
 
         <!-- Nav -->
