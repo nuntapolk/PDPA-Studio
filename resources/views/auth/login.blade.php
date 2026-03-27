@@ -182,14 +182,6 @@
                 @endforeach
             </div>
 
-            {{-- Powered by Incognito Lab ─────────────────────────────────── --}}
-            @if(file_exists(public_path('images/logo-incognito.png')))
-            <div class="mt-10 flex items-center justify-center gap-2">
-                <span class="text-xs" style="color:rgba(107,170,134,0.45);">Powered by</span>
-                <img src="{{ asset('images/logo-incognito.png') }}" alt="Incognito Lab"
-                     class="object-contain" style="height:16px;opacity:0.45;">
-            </div>
-            @endif
         </div>
     </div>
 
@@ -298,6 +290,7 @@
                 <button type="submit" class="btn-login">เข้าสู่ระบบ</button>
             </form>
 
+            <p class="mt-6 text-center text-xs" style="color:#94a3b8;">Powered by Incognito Lab.</p>
 
         </div>
     </div>
