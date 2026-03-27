@@ -188,43 +188,9 @@
     <!-- Right Panel — Form ───────────────────────────────────────────────── -->
     <div class="right-panel">
         <div>
-            {{-- Logo on right panel — Incognito Lab (on white bg) ─────── --}}
-            @if(file_exists(public_path('images/logo-incognito-full.png')))
-            <div class="flex items-center gap-3 mb-6">
-                <img src="{{ asset('images/logo-incognito-full.png') }}"
-                     alt="Incognito Lab"
-                     class="object-contain"
-                     style="height:44px;max-width:140px;">
-                <div style="border-left:1.5px solid #e5e7eb;padding-left:12px;">
-                    <div class="font-bold text-sm" style="color:#0f3020;">{{ config('app.name') }}</div>
-                    <div class="text-xs font-mono" style="color:#94a3b8;">v{{ config('app.version') }} B{{ config('app.build') }}</div>
-                </div>
+            <div class="mb-6">
+                <p class="font-bold text-base" style="color:#0f3020;">Incognito Lab &amp; MPX</p>
             </div>
-            @elseif(file_exists(public_path('images/logo-incognito.png')))
-            <div class="flex items-center gap-3 mb-6">
-                <img src="{{ asset('images/logo-incognito.png') }}"
-                     alt="Incognito Lab"
-                     class="object-contain"
-                     style="height:32px;max-width:110px;">
-                <div style="border-left:1.5px solid #e5e7eb;padding-left:12px;">
-                    <div class="font-bold text-sm" style="color:#0f3020;">{{ config('app.name') }}</div>
-                    <div class="text-xs font-mono" style="color:#94a3b8;">v{{ config('app.version') }} B{{ config('app.build') }}</div>
-                </div>
-            </div>
-            @else
-            <div class="flex items-center gap-3 mb-8">
-                <div class="w-10 h-10 rounded-xl flex items-center justify-center flex-shrink-0"
-                     style="background:linear-gradient(135deg,#c0272d,#e53e3e);">
-                    <svg class="w-5 h-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"/>
-                    </svg>
-                </div>
-                <div>
-                    <div class="font-bold text-sm" style="color:#0f3020;">{{ config('app.name') }}</div>
-                    <div class="text-xs font-mono" style="color:#94a3b8;">v{{ config('app.version') }} B{{ config('app.build') }}</div>
-                </div>
-            </div>
-            @endif
 
             <div class="mb-8">
                 <h2 class="text-2xl font-extrabold mb-1" style="color: #0f3020;">ยินดีต้อนรับ</h2>
