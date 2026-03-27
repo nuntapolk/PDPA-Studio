@@ -169,7 +169,7 @@
             </a>
 
             <div class="pt-4 pb-1.5 px-2">
-                <p class="text-xs font-semibold uppercase tracking-widest" style="color:rgba(21,87,46,0.5);font-size:10px;">จัดการข้อมูล</p>
+                <p class="text-xs font-semibold uppercase tracking-widest" style="color:rgba(21,87,46,0.5);font-size:10px;">PDPA Management</p>
             </div>
 
             <a href="{{ route('consent.index') }}" class="nav-item {{ request()->routeIs('consent.*') ? 'active' : '' }}">

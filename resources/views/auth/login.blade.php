@@ -160,9 +160,6 @@
 
             <h1 class="text-4xl font-extrabold text-white mb-2 tracking-tight">{{ config('app.name') }}</h1>
             <p class="text-sm mb-1" style="color:#6baa86;">{{ config('app.company') }}</p>
-            <p class="text-xs font-mono" style="color:rgba(107,170,134,0.5);">
-                v{{ config('app.version') }} Build {{ config('app.build') }}
-            </p>
             <p class="text-xs mt-2 mb-10" style="color:rgba(255,255,255,0.45);">
                 Powered by Incognito Lab.
             </p>
